@@ -2,6 +2,8 @@ import { useState } from "react";
 import style from "./AddTodo.module.css";
 import axios from "axios";
 
+const backendUrl = "https://todo-app-1yuz.onrender.com";
+
 function AddTodo({ onNewItem, getAllList }) {
   const [todoName, setTodoName] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -22,7 +24,7 @@ function AddTodo({ onNewItem, getAllList }) {
 
     if (todoName && dueDate) {
       axios
-        .post("https://todo-app-1yuz.onrender.com/add", newTodo)
+        .post(`${backendUrl}/add`, newTodo)
         .then((result) => {
           setTodoName("");
           setDueDate("");

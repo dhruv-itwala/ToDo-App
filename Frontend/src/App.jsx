@@ -6,14 +6,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NoRecord from "./assets/NoRecord.svg";
 
+const backendUrl = "https://todo-app-1yuz.onrender.com";
+
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
   const handleDeleteItem = (id) => {
-    console.log(`Deleting item with ID: ${id}`); // Log the ID for debugging
+    console.log(`Deleting item with ID: ${id}`);
 
     axios
-      .delete(`https://todo-app-1yuz.onrender.com/delete/${id}`)
+      .delete(`${backendUrl}/delete/${id}`)
       .then(() => {
         getAllList();
       })
@@ -29,7 +31,7 @@ function App() {
 
   const getAllList = () => {
     axios
-      .get("https://todo-app-1yuz.onrender.com/get")
+      .get(`${backendUrl}/get`)
       .then((result) => setTodoItems(result.data))
       .catch((err) => console.log(err));
   };
