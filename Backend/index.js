@@ -31,7 +31,10 @@ app.post("/add", (req, res) => {
 app.get("/get", (req, res) => {
   TodoModel.find()
     .then((result) => res.json(result))
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log("Error fetching todos:", err);
+      res.json([]); // Return an empty array on error
+    });
 });
 
 app.delete("/delete/:id", async (req, res) => {

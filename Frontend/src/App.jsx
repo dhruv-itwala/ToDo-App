@@ -6,36 +6,39 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NoRecord from "./assets/NoRecord.svg";
 
+// Define backend URL
 const backendUrl = "https://todo-app-1yuz.onrender.com";
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
+  // Function to handle deletion of an item
   const handleDeleteItem = (id) => {
     console.log(`Deleting item with ID: ${id}`);
-
     axios
       .delete(`${backendUrl}/delete/${id}`)
-      .then(() => {
-        getAllList();
-      })
+      .then(() => getAllList())
       .catch((err) => console.log("Error deleting todo:", err));
   };
 
+  // Function to handle adding a new item
   const handleNewItem = (itemName, itemDueDate) => {
     console.log(`New Item Added: ${itemName} Date: ${itemDueDate}`);
-
-    const newTodoItems = [...todoItems, { name: itemName, date: itemDueDate }];
-    setTodoItems(newTodoItems);
+    getAllList(); // Refresh the list after adding
   };
 
+  // Function to fetch all todo items from the backend
   const getAllList = () => {
     axios
       .get(`${backendUrl}/get`)
-      .then((result) => setTodoItems(result.data))
-      .catch((err) => console.log(err));
+      .then((result) => {
+        const data = Array.isArray(result.data) ? result.data : []; // Ensure data is an array
+        setTodoItems(data);
+      })
+      .catch((err) => console.log("Error fetching todos:", err));
   };
 
+  // Fetch todo items when the component mounts
   useEffect(() => {
     getAllList();
   }, []);
