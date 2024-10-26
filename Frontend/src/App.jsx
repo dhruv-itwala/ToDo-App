@@ -13,7 +13,7 @@ function App() {
     console.log(`Deleting item with ID: ${id}`); // Log the ID for debugging
 
     axios
-      .delete(`http://localhost:3001/delete/${id}`)
+      .delete(`https://todo-app-1yuz.onrender.com/delete/${id}`)
       .then(() => {
         getAllList();
       })
@@ -29,7 +29,7 @@ function App() {
 
   const getAllList = () => {
     axios
-      .get("http://localhost:3001/get")
+      .get("https://todo-app-1yuz.onrender.com/get")
       .then((result) => setTodoItems(result.data))
       .catch((err) => console.log(err));
   };

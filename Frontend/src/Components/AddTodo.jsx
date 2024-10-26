@@ -22,7 +22,7 @@ function AddTodo({ onNewItem, getAllList }) {
 
     if (todoName && dueDate) {
       axios
-        .post("http://localhost:3001/add", newTodo)
+        .post("https://todo-app-1yuz.onrender.com/add", newTodo)
         .then((result) => {
           setTodoName("");
           setDueDate("");
