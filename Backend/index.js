@@ -16,12 +16,13 @@ console.log("MongoDB URI:", mongoURI);
 
 // MongoDB Connection
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => {
-    console.error("MongoDB connection error:", err);
-    process.exit(1); // Exit process if connection fails
+    console.error("MongoDB connection error:", err.message);
+    process.exit(1);
   });
+
 
 // Routes
 app.post("/add", async (req, res) => {
