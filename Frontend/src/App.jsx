@@ -4,7 +4,7 @@ import "./App.css";
 import TodoItems from "./Components/TodoItems";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NoRecord from "./assets/NoRecord.svg"; // Assuming the SVG file is named NoRecord.svg
+import NoRecord from "./assets/NoRecord.svg";
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
