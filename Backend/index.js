@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 console.log("MongoDB URI:", mongoURI); // Debugging line to confirm env variable
-
+const port = process.env.PORT || 4000;
 mongoose
   .connect(mongoURI)
   .then(() => console.log("MongoDB connected..."))
@@ -49,6 +49,6 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log("Server is running on port 3001");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
