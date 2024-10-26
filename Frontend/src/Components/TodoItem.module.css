@@ -1,0 +1,26 @@
+.container {
+  height: 50px; /* Set a fixed height for better alignment */
+}
+
+.todoName {
+  padding: 10px; /* Add padding for better spacing */
+  text-align: left; /* Align text to the left */
+}
+
+.todoDate {
+  text-align: center; /* Center the date */
+}
+
+.deletebtn {
+  border-radius: 5px;
+  background-color: #ff6f61;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deletebtn:hover {
+  background-color: #ff4f4f; /* Darker shade on hover */
+}

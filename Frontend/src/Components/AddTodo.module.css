@@ -1,0 +1,24 @@
+.input {
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Soft input background */
+  color: #4a4a4a;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 5px;
+}
+
+.btn {
+  border-radius: 5px;
+  background-color: #6e7bff; /* Button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #4a5bc8; /* Darker shade on hover */
+}

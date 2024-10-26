@@ -1,0 +1,42 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-todo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.no-tasks-message {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.no-record {
+  height: 350px;
+  width: 350px;
+}
+
+.todo-items {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.todo-items th,
+.todo-items td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.todo-items th {
+  background-color: #f7e3f2;
+  color: #5d4b8d;
+}
+
+.todo-items tr:hover {
+  background-color: #f0f0f0;
+}
