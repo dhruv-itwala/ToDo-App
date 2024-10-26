@@ -16,18 +16,28 @@ console.log("MongoDB URI:", mongoURI);
 
 // MongoDB Connection
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => {
     console.error("MongoDB connection error:", err.message);
     process.exit(1);
   });
 
-
 // Routes
 app.post("/add", async (req, res) => {
   try {
     const { todoName, dueDate } = req.body;
+
+    // Validate input
+    if (!todoName || !dueDate) {
+      return res
+        .status(400)
+        .json({ message: "todoName and dueDate are required" });
+    }
+
     const newTodo = await TodoModel.create({ todoName, dueDate });
     res.status(201).json(newTodo);
   } catch (err) {
@@ -50,9 +60,11 @@ app.delete("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedTodo = await TodoModel.findByIdAndDelete(id);
+
     if (!deletedTodo) {
       return res.status(404).json({ message: "Todo not found" });
     }
+
     res.json({ message: "Todo deleted successfully" });
   } catch (err) {
     console.error("Error deleting todo:", err);
